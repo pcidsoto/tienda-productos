@@ -107,23 +107,24 @@ function cancelEdit() {
     document.getElementById('cancel-btn').style.display = 'none';
     editingProductId = null;
 }
-// // Eliminar producto
-// async function deleteProduct(productId) {
-// if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
-// try {
-// const response = await fetch(`/ api / products / ${ productId } `, {
-// method: 'DELETE'
-// });
-// if (response.ok) {
-// alert('Producto eliminado correctamente');
-// loadProducts();
-// } else {
-// const error = await response.json();
-// alert('Error: ' + error.message);
-// }
-// } catch (error) {
-// console.error('Error al eliminar producto:', error);
-// alert('Error al eliminar el producto');
-// }
-// }
-// }
+
+// Eliminar producto
+async function deleteProduct(productId) {
+    if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+        try {
+            const response = await fetch(`/api/products/${productId}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                alert('Producto eliminado correctamente');
+                loadProducts();
+            } else {
+                const error = await response.json();
+                alert('Error: ' + error.message);
+            }
+        } catch (error) {
+            console.error('Error al eliminar producto:', error);
+            alert('Error al eliminar el producto');
+        }
+    }
+}
